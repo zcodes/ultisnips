@@ -35,7 +35,7 @@ def _find_all_snippet_directories():
         snippet_dirs = _vim.eval('g:UltiSnipsSnippetDirectories')
 
     # specify the ultisnips directories by handle with absolute path
-    if _vim.eval("exists('g:UltiSnipsUltiSnipsAbsDirectories')") == 1:
+    if _vim.eval("exists('g:UltiSnipsUltiSnipsAbsDirectories')") == '1':
         snippet_dirs = _vim.eval('g:UltiSnipsUltiSnipsAbsDirectories')
         return snippet_dirs
 
