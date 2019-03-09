@@ -42,8 +42,15 @@ def _snipmate_files_for(ft):
         os.path.join(ft, '*.snippet'),
         os.path.join(ft, '*/*.snippet'),
     ]
+
     ret = set()
-    for rtp in _vim.eval('&runtimepath').split(','):
+    if _vim.eval("exists('g:UltiSnipsSnipMateAbsDirectories')") == '1':
+        # specify the snipmate snippets by handle with absolute path
+        paths = _vim.eval('g:UltiSnipsSnipMateAbsDirectories')
+    else:
+        paths = _vim.eval('&runtimepath').split(',')
+
+    for rtp in paths:
         path = os.path.realpath(os.path.expanduser(
             os.path.join(rtp, 'snippets')))
         for pattern in patterns:
