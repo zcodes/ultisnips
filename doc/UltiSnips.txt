@@ -330,7 +330,7 @@ For even more advanced usage, you can directly write python functions using
 UltiSnip's python modules. This is an internal and therefore unstable API and
 not recommended though.
 
-Here is a small example funtion that expands a snippet: >
+Here is a small example function that expands a snippet: >
 
    function! s:Ulti_ExpandSnip()
    Python << EOF
@@ -1094,7 +1094,7 @@ example illustrating an HTML anchor snippet.
 
 ------------------- SNIP -------------------
 snippet a
-<a href="${1:http://www.${2:example.com}}"</a>
+<a href="${1:http://www.${2:example.com}}"
     $0
 </a>
 endsnippet
@@ -1153,6 +1153,22 @@ a<tab>http://www.google.com<c-j><BS><c-j>Google ->
 <a href="http://www.google.com">
     Google
 </a>
+
+Another special type of tabstop is choice tabstop. It let's you to choose
+from a predefined list of items. The syntax of a choice tabstop is
+'${1|item1,item2,item3,...|}'. Here is an example to illustrate this
+feature.
+
+------------------- SNIP -------------------
+snippet q
+Your age: ${1|<18,18~60,>60|}
+Your height: ${2|<120cm,120cm~180cm,>180cm|}
+endsnippet
+------------------- SNAP -------------------
+
+q<tab>2<c-j>2
+Your age: 18~60
+Your height: 120cm~180cm
 
 The default text of tabstops can also contain mirrors, transformations or
 interpolation.
